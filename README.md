@@ -4,10 +4,10 @@
 
  * total services = 4
     
-    planet-earth - nestJS
-    planet-mars - nestJS
-    translator - Typescript
-    Redis - docker
+    - planet-earth : nestJS (directory- "planer-earth" )
+    - planet-mars : nestJS (directory- "planer-mars" )
+    - translator : Typescript (directory- "translator" )
+    - Redis : docker
 
 
     * USING DOCKER COMPOSE
