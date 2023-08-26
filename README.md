@@ -6,14 +6,20 @@
     
     planet-earth - nestJS
     planet-mars - nestJS
-    trabslator - Typescript
+    translator - Typescript
     Redis - docker
 
-    1. Start the redis docker container using docker composer up command
-    2. start individual services
-        - go inside "planet-earth" directory - "npm install" - then "npm run start:dev" (running on port 3000) - swagger url "localhost:3000/api"
-        - go inside "planet-mars" directory - "npm install" - then "npm run start:dev" (running on port 3001) - swagger url "localhost:3001/api"
-        - go inside "translator" directory - "npm install" - then "npm run start:dev"
+
+    * USING DOCKER COMPOSE
+        - RUN COMMAND "docker compose up"
+        - this will build and run all required 4 services
+
+    OR - manually
+            1. install and start the redis server on local machine
+            2. start individual services
+                - go inside "planet-earth" directory - "npm install" - then "npm run start:dev" (running on port 3000) - swagger url "localhost:3000/api"
+                - go inside "planet-mars" directory - "npm install" - then "npm run start:dev" (running on port 3001) - swagger url "localhost:3001/api"
+                - go inside "translator" directory - "npm install" - then "npm run start:dev"
 
 # For Testing
 

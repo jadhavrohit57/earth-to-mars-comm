@@ -1,12 +1,15 @@
 import { createClient, RedisClientType } from 'redis';
 import { Translate } from './helper';
 
+console.log('REDIS_HOST trans---- ', process.env.REDIS_HOST);
+
+const redisHost: string = process.env.REDIS_HOST || 'localhost';
 (async () => {
 	const trans = new Translate();
 
 	// create redis pub sub clients
 	const publisher: RedisClientType = createClient({
-		url: 'redis://localhost:6379' // redis docker container url
+		url: `redis://${redisHost}:6379` // redis docker container url
 	});
 
 	const subscriber: RedisClientType = publisher.duplicate();

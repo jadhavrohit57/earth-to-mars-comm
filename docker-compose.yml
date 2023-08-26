@@ -7,36 +7,42 @@ services:
      ports:
        - '6379:6379'
 
-  #  planetearth:
-  #    image: planetearth
-  #    build:
-  #     context: .
-  #     dockerfile: planet-earth/Dockerfile
-  #    depends_on:
-  #     - redis
-  #    ports:
-  #      - "4001:3000"
+   planet-earth:
+     image: planet-earth
+     build:
+      context: ./planet-earth
+      dockerfile: Dockerfile
+     environment:
+      - REDIS_HOST=redis
+     depends_on:
+      - redis
+     ports:
+       - "3000:3000"
 
-  #  planetmars:
-  #   #  image: planetmars
-  #    build:
-  #     context: .
-  #     dockerfile: planet-mars/Dockerfile
-  #    depends_on:
-  #     - planet-earth
-  #     - redis
-  #    ports:
-  #      - "4002:3001"
+   planet-mars:
+     image: planet-mars
+     build:
+      context: ./planet-mars
+      dockerfile: Dockerfile
+     environment:
+      - REDIS_HOST=redis
+     depends_on:
+      - planet-earth
+      - redis
+     ports:
+       - "3001:3001"
 
 
-  #  translator:
-  #    image: earth-mars-translator
-  #    build:
-  #     context: .
-  #     dockerfile: translator/Dockerfile
-  #    depends_on:
-  #     - planetearth
-  #     - planetmars
-  #     - redis
-  #   #  ports:
-  #   #    - ""
+   translator:
+     image: earth-mars-translator
+     build:
+      context: ./translator
+      dockerfile: Dockerfile
+     environment:
+      - REDIS_HOST=redis
+     depends_on:
+      - planet-earth
+      - planet-mars
+      - redis
+    #  ports:
+    #    - ""

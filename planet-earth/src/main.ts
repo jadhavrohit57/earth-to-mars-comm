@@ -4,11 +4,13 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common/pipes';
 
+
 async function bootstrap() {
+
 	const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
 		transport: Transport.REDIS,
 		options: {
-			host: 'localhost',
+			host: process.env.REDIS_HOST || 'localhost',
 			port: 6379
 		}
 	});
