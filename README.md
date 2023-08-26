@@ -47,7 +47,7 @@
     *   Send message from "Mars to Earth" call API
         POST localhost:3001/api/earth-mars-comm/message
         request body ={
-                            "message": "this message is from earth"
+                            "message": "8444$447777 6337777$77772433 4447777 333777666$6 62777$7777"
                         }
         -   CURL
                 curl --location --request POST 'localhost:3001/api/earth-mars-comm/message' \
