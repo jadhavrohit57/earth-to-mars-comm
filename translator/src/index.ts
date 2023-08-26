@@ -5,38 +5,40 @@ import { Translate } from './helper';
 	const trans = new Translate();
 
 	// create redis pub sub clients
-	const publisher = createClient({
+	const publisher: RedisClientType = createClient({
 		url: 'redis://localhost:6379' // redis docker container url
 	});
 
-	const subscriber = publisher.duplicate();
+	const subscriber: RedisClientType = publisher.duplicate();
 
 	await publisher.connect();
 	await subscriber.connect();
 
 	// subscribe for channel from earth
-	subscriber.subscribe('from-earth', (data) => {
-		console.log('from-earth', data);
+	subscriber.subscribe('from-earth', (data: string) => {
+		const message: Record<string, any> = JSON.parse(data);
+		// transfer to mars code
+		const translatedMsg = trans.translateFromEarthToMars(message.data);
+		console.log('Translation ', {
+			from: message.data,
+			to: translatedMsg
+		});
 
-		// transfer to mars
-		const translatedMsg = trans.translateFromEarthToMars(data);
 		publisher.publish('toMars', translatedMsg);
 	});
 
 	subscriber.subscribe('from-mars', (data: string) => {
-		console.log('from-mars', data);
+		const message: Record<string, any> = JSON.parse(data);
 
 		// transfer to earth
-		const translatedMsg = trans.translateFromMarsToEarth(data);
+		const translatedMsg = trans.translateFromMarsToEarth(message.data);
+		console.log('Translation ', {
+			from: message.data,
+			to: translatedMsg
+		});
+
 		publisher.publish('toEarth', translatedMsg);
 	});
 
-	// setTimeout(() => {
-	// 	publisher.publish('testme', JSON.stringify({ hello: 'there' }));
-	// }, 5000);
-
 	console.log('redis pub sub client connectd successfully');
 })();
-
-// 44434446668 444 26 3355566666 666668 44666887777866666
-// 44434446668 444 26 3355566666 666668 44666887777866666

@@ -1,2 +1,5 @@
 node_modules
-/dist
+dist
+planet-earth/dist
+planet-mars/dist
+translator/dist
