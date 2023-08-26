@@ -15,6 +15,11 @@ export class Translate {
 				message = message + ' ';
 			} else {
 				const val = keymappings[char] || char;
+				// add delimeter if needed
+				if (message[message.length - 1] === val[0]) {
+					message = message + '$';
+				}
+
 				message = message + val;
 			}
 		}
