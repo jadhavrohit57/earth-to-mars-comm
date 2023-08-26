@@ -2,25 +2,25 @@
 
 # Steps to start the service
 
- * total services = 4
-    
-    - planet-earth : nestJS (directory- "planer-earth" )
-    - planet-mars : nestJS (directory- "planer-mars" )
-    - translator : Typescript (directory- "translator" )
-    - Redis : docker
+    *   total services = 4
+        
+        -   planet-earth : nestJS (directory- "planer-earth" )
+        -   planet-mars : nestJS (directory- "planer-mars" )
+        -   translator : Typescript (directory- "translator" )
+        -   Redis : docker
 
 
-* USING DOCKER COMPOSE
-        - RUN COMMAND "docker compose up"
-        - this will build and run all required 4 services
+    *   USING DOCKER COMPOSE
+        -   RUN COMMAND "docker compose up"
+        -   this will build and run all required 4 services
 
 
-* OR - manually
-        1. install and start the redis server on local machine
-        2. start individual services
-            - go inside "planet-earth" directory - "npm install" - then "npm run start:dev" (running on port 3000) - swagger url "localhost:3000/api"
-            - go inside "planet-mars" directory - "npm install" - then "npm run start:dev" (running on port 3001) - swagger url "localhost:3001/api"
-            - go inside "translator" directory - "npm install" - then "npm run start:dev"
+    *   OR
+        -   install and start the redis server on local machine
+        -   start individual services
+                1.  go inside "planet-earth" directory - "npm install" - then "npm run start:dev" (running on port 3000) - swagger url "localhost:3000/api"
+                2.  go inside "planet-mars" directory - "npm install" - then "npm run start:dev" (running on port 3001) - swagger url "localhost:3001/api"
+                3.  go inside "translator" directory - "npm install" - then "npm run start:dev"
 
 # For Testing
 
